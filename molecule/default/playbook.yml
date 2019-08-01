@@ -1,0 +1,6 @@
+---
+- name: test all the things
+  hosts: all
+  become: true
+  roles:
+    - role: ansible-role-containers

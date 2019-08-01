@@ -1,0 +1,26 @@
+---
+containers: []
+# containers:
+#   - name: cadvisor
+#     image: "google/cadvisor:latest"
+#     state: started
+#     restart_policy: always
+#     privileged: true
+#     log_driver: journald
+#     log_options:
+#       tag: docker/cadvisor
+#     published_ports:
+#       - "127.0.0.1:8800:8080"
+#     devices:
+#       - "/dev/zfs:/dev/zfs"
+#     volumes:
+#       - "/:/rootfs:ro"
+#       - "/var/run:/var/run:rw"
+#       - "/sys:/sys:ro"
+#       - "/var/lib/docker/:/var/lib/docker:ro"
+
+registries: []
+# registries:
+#   - username: user
+#     password: pass
+#     registry_url: registry.docker.com

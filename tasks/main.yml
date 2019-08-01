@@ -1,0 +1,6 @@
+---
+- include_tasks: registries.yml
+  when: registries
+
+- include_tasks: containers.yml
+  when: containers
