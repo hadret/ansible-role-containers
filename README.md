@@ -20,6 +20,11 @@ empty by default but you can find one example for each in
 Dependencies
 ------------
 
+The following role is not a hard dependency, hence it's not mentioned in the
+[meta/main.yml](meta/main.yml) file. Reason for that geerlingguy.docker is just
+ensure that the Docker daemon (which is a hard dependency, without this role
+won't run) is present.
+
 - [geerlingguy.docker](https://github.com/geerlingguy/ansible-role-docker)
 
 Example Playbook
