@@ -8,7 +8,9 @@ to login to.
 Requirements
 ------------
 
-Docker needs to be in place in order for this role to work.
+Docker needs to be in place in order for this role to work. Additionally, python
+module [docker](https://pypi.org/project/docker) is also needed (i.e. Docker
+SDK for Python).
 
 Role Variables
 --------------
@@ -20,11 +22,12 @@ empty by default but you can find one example for each in
 Dependencies
 ------------
 
-The following role is not a hard dependency, hence it's not mentioned in the
-[meta/main.yml](meta/main.yml) file. Reason for that geerlingguy.docker is just
-ensure that the Docker daemon (which is a hard dependency, without this role
-won't run) is present.
+The following roles are not a hard dependencies, hence it's not mentioned in the
+[meta/main.yml](meta/main.yml) file. Reason for that geerlingguy.docker and
+geerlingguy.pip is to just ensure that the Docker daemon and Docker Python SDK
+is present (as both of these are hard dependencies).
 
+- [geerlingguy.pip](https://github.com/geerlingguy/ansible-role-pip)
 - [geerlingguy.docker](https://github.com/geerlingguy/ansible-role-docker)
 
 Example Playbook
@@ -32,9 +35,15 @@ Example Playbook
 
 ```
 - hosts: all
+
+  vars:
+    pip_install_packages:
+      - name: docker
+
   roles:
-     - geerlingguy.docker
-     - hadret.containers
+    - geerlingguy.pip
+    - geerlingguy.docker
+    - hadret.containers
 ```
 
 Credits
