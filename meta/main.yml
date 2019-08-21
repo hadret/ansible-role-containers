@@ -8,6 +8,9 @@ galaxy_info:
   license: MIT
   min_ansible_version: 2.7
   platforms:
+    - name: Debian
+      versions:
+        - buster
     - name: Ubuntu
       versions:
         - xenial
