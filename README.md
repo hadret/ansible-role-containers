@@ -24,10 +24,10 @@ empty by default but you can find one example for each in
 Dependencies
 ------------
 
-The following roles are not a hard dependencies, hence it's not mentioned in the
-[meta/main.yml](meta/main.yml) file. Reason for that geerlingguy.docker and
-geerlingguy.pip is to just ensure that the Docker daemon and Docker Python SDK
-is present (as both of these are hard dependencies).
+The following roles are not a hard dependencies, hence they are not mentioned
+in the [meta/main.yml](meta/main.yml) file. Reason for that geerlingguy.docker
+and geerlingguy.pip is to just ensure that the Docker daemon and Docker Python
+SDK is present (as both of these are hard dependencies).
 
 - [geerlingguy.pip](https://github.com/geerlingguy/ansible-role-pip)
 - [geerlingguy.docker](https://github.com/geerlingguy/ansible-role-docker)
