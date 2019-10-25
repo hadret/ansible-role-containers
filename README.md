@@ -39,6 +39,7 @@ Example Playbook
 - hosts: all
 
   vars:
+    pip_package: python3-pip
     pip_install_packages:
       - name: docker
 
