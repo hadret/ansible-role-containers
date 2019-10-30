@@ -19,6 +19,13 @@ containers: []
 #       - "/sys:/sys:ro"
 #       - "/var/lib/docker/:/var/lib/docker:ro"
 
+networks: []
+# networks:
+#   - name: ipv6_network
+#     enable_ipv6: yes
+#     ipam_config:
+#       - subnet: fd00:0001:0001::/48
+
 registries: []
 # registries:
 #   - username: user

@@ -4,7 +4,7 @@ dependencies: []
 galaxy_info:
   role_name: containers
   author: Filip Chabik (hadret)
-  description: Wrapper role on top of docker_container and docker_login.
+  description: Wrapper role on top of docker_container, docker_network and docker_login.
   license: MIT
   min_ansible_version: 2.7
   platforms:
@@ -18,4 +18,5 @@ galaxy_info:
   galaxy_tags:
     - containers
     - docker
+    - networks
     - registry
