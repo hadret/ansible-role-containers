@@ -9,7 +9,7 @@ lint:
     config-file: molecule/default/yaml-lint.yml
 platforms:
   - name: instance
-    image: geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu1804}-ansible
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu1804}-ansible"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro

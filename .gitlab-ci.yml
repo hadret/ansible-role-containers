@@ -22,4 +22,5 @@ molecule:
     - shell
   script:
     - pip install docker molecule
+    - ansible --version
     - molecule test
