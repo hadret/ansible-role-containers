@@ -4,8 +4,8 @@ Ansible Role: Containers
 [![Build Status](https://travis-ci.com/hadret/ansible-role-containers.svg?branch=master)](https://travis-ci.com/hadret/ansible-role-containers)
 
 An Ansible role that spins up an array of [Docker](https://docker.com)
-containers on Linux. It can additionally handle an array of Docker registries
-to login to.
+containers on Linux. It can additionally handle arrays of Docker registries
+and networks.
 
 Requirements
 ------------
@@ -17,8 +17,8 @@ SDK for Python).
 Role Variables
 --------------
 
-Available variables are both arrays: `containers` and `registries`. They are
-empty by default but you can find one example for each in
+All available variables are arrays (`containers`, `networks` and `registries`).
+They are empty by default but you can find one example for each in
 [defaults/main.yml](defaults/main.yml).
 
 Dependencies
@@ -38,15 +38,32 @@ Example Playbook
 ```
 - hosts: all
 
-  vars:
-    pip_package: python3-pip
-    pip_install_packages:
-      - name: docker
+vars:
+  pip_package: python-pip
+  pip_install_packages:
+    - name: docker
 
-  roles:
-    - geerlingguy.pip
-    - geerlingguy.docker
-    - hadret.containers
+  networks:
+    - name: network-1
+
+  containers:
+    - name: hello-1
+      image: "hello-world"
+      state: started
+      restart_policy: always
+      networks:
+        - name: network-1
+    - name: hello-2
+      image: "hello-world"
+      state: started
+      restart_policy: always
+      networks:
+        - name: network-1
+
+roles:
+  - geerlingguy.pip
+  - geerlingguy.docker
+  - hadret.containers
 ```
 
 Credits
