@@ -1,9 +1,9 @@
 ---
 - include_tasks: registries.yml
-  when: registries
+  when: registries | length > 0
 
 - include_tasks: networks.yml
-  when: networks
+  when: networks | length > 0
 
 - include_tasks: containers.yml
-  when: containers
+  when: containers | length > 0
