@@ -2,29 +2,5 @@
 - name: test all the things
   hosts: all
   become: true
-
-  vars:
-    pip_install_packages:
-      - name: docker
-
-    networks:
-      - name: network-1
-
-    containers:
-      - name: hello-1
-        image: "hello-world"
-        state: started
-        restart_policy: always
-        networks:
-          - name: network-1
-      - name: hello-2
-        image: "hello-world"
-        state: started
-        restart_policy: always
-        networks:
-          - name: network-1
-
   roles:
-    - geerlingguy.pip
-    - geerlingguy.docker
-    - ansible-role-containers
+    - role: ansible-role-containers
