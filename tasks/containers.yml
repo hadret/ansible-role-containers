@@ -1,101 +1,101 @@
 ---
 - name: deploy the container(s)
   docker_container:
-    name: '{{ item.name }}'
+    name: "{{ item.name }}"
     api_version: '{{ item.api_version | default("auto") }}'
     auto_remove: '{{ item.auto_remove | default("no") }}'
-    blkio_weight: '{{ item.blkio_weight | default(omit) }}'
-    ca_cert: '{{ item.ca_cert | default(omit) }}'
-    cap_drop: '{{ item.cap_drop | default(omit) }}'
-    capabilities: '{{ item.capabilities | default(omit) }}'
+    blkio_weight: "{{ item.blkio_weight | default(omit) }}"
+    ca_cert: "{{ item.ca_cert | default(omit) }}"
+    cap_drop: "{{ item.cap_drop | default(omit) }}"
+    capabilities: "{{ item.capabilities | default(omit) }}"
     cleanup: '{{ item.cleanup | default("no") }}'
-    client_cert: '{{ item.client_cert | default(omit) }}'
-    client_key: '{{ item.client_key | default(omit) }}'
-    command: '{{ item.command | default(omit) }}'
-    comparisons: '{{ item.comparisons | default(omit) }}'
-    cpu_period: '{{ item.cpu_period | default(omit) }}'
-    cpu_quota: '{{ item.cpu_quota | default(omit) }}'
-    cpu_shares: '{{ item.cpu_shares | default(omit) }}'
-    cpuset_cpus: '{{ item.cpuset_cpus | default(omit) }}'
-    cpuset_mems: '{{ item.cpuset_mems | default(omit) }}'
+    client_cert: "{{ item.client_cert | default(omit) }}"
+    client_key: "{{ item.client_key | default(omit) }}"
+    command: "{{ item.command | default(omit) }}"
+    comparisons: "{{ item.comparisons | default(omit) }}"
+    cpu_period: "{{ item.cpu_period | default(omit) }}"
+    cpu_quota: "{{ item.cpu_quota | default(omit) }}"
+    cpu_shares: "{{ item.cpu_shares | default(omit) }}"
+    cpuset_cpus: "{{ item.cpuset_cpus | default(omit) }}"
+    cpuset_mems: "{{ item.cpuset_mems | default(omit) }}"
     debug: '{{ item.debug | default("no") }}'
     detach: '{{ item.detach | default("yes") }}'
-    device_read_bps: '{{ item.device_read_bps | default(omit) }}'
-    device_read_iops: '{{ item.device_read_iops | default(omit) }}'
-    device_write_bps: '{{ item.device_write_bps | default(omit) }}'
-    device_write_iops: '{{ item.device_write_iops | default(omit) }}'
-    devices: '{{ item.devices | default(omit) }}'
-    dns_opts: '{{ item.dns_opts | default(omit) }}'
-    dns_search_domains: '{{ item.dns_search_domains | default(omit) }}'
-    dns_servers: '{{ item.dns_servers | default(omit) }}'
-    docker_host: '{{ item.docker_host | default(omit) }}'
-    domainname: '{{ item.domainname | default(omit) }}'
-    entrypoint: '{{ item.e | default(omit) }}'
-    env: '{{ item.env | default(omit) }}'
-    env_file: '{{ item.env_file | default(omit) }}'
-    etc_hosts: '{{ item.etc_hosts | default(omit) }}'
-    exposed_ports: '{{ item.exposed_ports | default(omit) }}'
+    device_read_bps: "{{ item.device_read_bps | default(omit) }}"
+    device_read_iops: "{{ item.device_read_iops | default(omit) }}"
+    device_write_bps: "{{ item.device_write_bps | default(omit) }}"
+    device_write_iops: "{{ item.device_write_iops | default(omit) }}"
+    devices: "{{ item.devices | default(omit) }}"
+    dns_opts: "{{ item.dns_opts | default(omit) }}"
+    dns_search_domains: "{{ item.dns_search_domains | default(omit) }}"
+    dns_servers: "{{ item.dns_servers | default(omit) }}"
+    docker_host: "{{ item.docker_host | default(omit) }}"
+    domainname: "{{ item.domainname | default(omit) }}"
+    entrypoint: "{{ item.e | default(omit) }}"
+    env: "{{ item.env | default(omit) }}"
+    env_file: "{{ item.env_file | default(omit) }}"
+    etc_hosts: "{{ item.etc_hosts | default(omit) }}"
+    exposed_ports: "{{ item.exposed_ports | default(omit) }}"
     force_kill: '{{ item.force_kill | default("no") }}'
-    groups: '{{ item.groups | default(omit) }}'
-    healthcheck: '{{ item.healthcheck | default(omit) }}'
-    hostname: '{{ item.hostname | default(omit) }}'
+    groups: "{{ item.groups | default(omit) }}"
+    healthcheck: "{{ item.healthcheck | default(omit) }}"
+    hostname: "{{ item.hostname | default(omit) }}"
     ignore_image: '{{ item.ignore_image | default("no") }}'
-    image: '{{ item.image | default(omit) }}'
+    image: "{{ item.image | default(omit) }}"
     init: '{{ item.init | default("no") }}'
     interactive: '{{ item.interactive | default("no") }}'
-    ipc_mode: '{{ item.ipc_mode | default(omit) }}'
+    ipc_mode: "{{ item.ipc_mode | default(omit) }}"
     keep_volumes: '{{ item.keep_volumes | default("yes") }}'
-    kernel_memory: '{{ item.kernel_memory | default(omit) }}'
-    kill_signal: '{{ item.kill_signal | default(omit) }}'
-    labels: '{{ item.labels | default(omit) }}'
-    links: '{{ item.links | default(omit) }}'
-    log_driver: '{{ item.log_driver | default(omit) }}'
-    log_options: '{{ item.log_options | default(omit) }}'
-    mac_address: '{{ item.mac_address | default(omit) }}'
+    kernel_memory: "{{ item.kernel_memory | default(omit) }}"
+    kill_signal: "{{ item.kill_signal | default(omit) }}"
+    labels: "{{ item.labels | default(omit) }}"
+    links: "{{ item.links | default(omit) }}"
+    log_driver: "{{ item.log_driver | default(omit) }}"
+    log_options: "{{ item.log_options | default(omit) }}"
+    mac_address: "{{ item.mac_address | default(omit) }}"
     memory: '{{ item.memory | default("0") }}'
-    memory_reservation: '{{ item.memory_reservation | default(omit) }}'
-    memory_swap: '{{ item.memory_swap | default(omit) }}'
-    memory_swappiness: '{{ item.memory_swappiness | default(omit) }}'
-    network_mode: '{{ item.network_mode | default(omit) }}'
-    networks: '{{ item.networks | default(omit) }}'
-    networks_cli_compatible: '{{ item.networks_cli_compatible | default(omit) }}'
-    oom_killer: '{{ item.oom_killer | default(omit) }}'
-    oom_score_adj: '{{ item.oom_score_adj | default(omit) }}'
+    memory_reservation: "{{ item.memory_reservation | default(omit) }}"
+    memory_swap: "{{ item.memory_swap | default(omit) }}"
+    memory_swappiness: "{{ item.memory_swappiness | default(omit) }}"
+    network_mode: "{{ item.network_mode | default(omit) }}"
+    networks: "{{ item.networks | default(omit) }}"
+    networks_cli_compatible: "{{ item.networks_cli_compatible | default(omit) }}"
+    oom_killer: "{{ item.oom_killer | default(omit) }}"
+    oom_score_adj: "{{ item.oom_score_adj | default(omit) }}"
     output_logs: '{{ item.output_logs | default("no") }}'
     paused: '{{ item.paused | default("no") }}'
-    pid_mode: '{{ item.pid_mode | default(omit) }}'
-    pids_limit: '{{ item.pids_limit | default(omit) }}'
+    pid_mode: "{{ item.pid_mode | default(omit) }}"
+    pids_limit: "{{ item.pids_limit | default(omit) }}"
     privileged: '{{ item.privileged | default("no") }}'
-    published_ports: '{{ item.published_ports | default(omit) }}'
+    published_ports: "{{ item.published_ports | default(omit) }}"
     pull: '{{ item.pull | default("no") }}'
     purge_networks: '{{ item.purge_networks | default("no") }}'
     read_only: '{{ item.read_only | default("no") }}'
     recreate: '{{ item.recreate | default("no") }}'
     restart: '{{ item.restart | default("no") }}'
-    restart_policy: '{{ item.restart_policy | default(omit) }}'
-    restart_retries: '{{ item.restart_retries | default(omit) }}'
-    runtime: '{{ item.runtime | default(omit) }}'
-    security_opts: '{{ item.security_opts | default(omit) }}'
-    shm_size: '{{ item.shm_size | default(omit) }}'
-    ssl_version: '{{ item.ssl_version | default(omit) }}'
+    restart_policy: "{{ item.restart_policy | default(omit) }}"
+    restart_retries: "{{ item.restart_retries | default(omit) }}"
+    runtime: "{{ item.runtime | default(omit) }}"
+    security_opts: "{{ item.security_opts | default(omit) }}"
+    shm_size: "{{ item.shm_size | default(omit) }}"
+    ssl_version: "{{ item.ssl_version | default(omit) }}"
     state: '{{ item.state | default("started") }}'
-    stop_signal: '{{ item.stop_signal | default(omit) }}'
-    stop_timeout: '{{ item.stop_timeout | default(omit) }}'
-    sysctls: '{{ item.sysctls | default(omit) }}'
+    stop_signal: "{{ item.stop_signal | default(omit) }}"
+    stop_timeout: "{{ item.stop_timeout | default(omit) }}"
+    sysctls: "{{ item.sysctls | default(omit) }}"
     timeout: '{{ item.timeout | default("60") }}'
     tls: '{{ item.tls | default("no") }}'
     tls_hostname: '{{ item.tls_hostname | default("localhost") }}'
-    tmpfs: '{{ item.tmpfs | default(omit) }}'
-    tty: '{{ item.tty | default(omit) }}'
-    ulimits: '{{ item.ulimits | default(omit) }}'
-    user: '{{ item.user | default(omit) }}'
-    userns_mode: '{{ item.userns_mode | default(omit) }}'
-    uts: '{{ item.uts | default(omit) }}'
+    tmpfs: "{{ item.tmpfs | default(omit) }}"
+    tty: "{{ item.tty | default(omit) }}"
+    ulimits: "{{ item.ulimits | default(omit) }}"
+    user: "{{ item.user | default(omit) }}"
+    userns_mode: "{{ item.userns_mode | default(omit) }}"
+    uts: "{{ item.uts | default(omit) }}"
     validate_certs: '{{ item.validate_certs | default("no") }}'
-    volume_driver: '{{ item.volume_driver | default(omit) }}'
-    volumes: '{{ item.volumes | default(omit) }}'
-    volumes_from: '{{ item.volumes_from | default(omit) }}'
-    working_dir: '{{ item.working_dir | default(omit) }}'
+    volume_driver: "{{ item.volume_driver | default(omit) }}"
+    volumes: "{{ item.volumes | default(omit) }}"
+    volumes_from: "{{ item.volumes_from | default(omit) }}"
+    working_dir: "{{ item.working_dir | default(omit) }}"
   no_log: true
   loop: "{{ containers }}"
   when: containers is defined
