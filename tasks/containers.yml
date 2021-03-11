@@ -86,7 +86,6 @@
     tls: '{{ item.tls | default("no") }}'
     tls_hostname: '{{ item.tls_hostname | default("localhost") }}'
     tmpfs: '{{ item.tmpfs | default(omit) }}'
-    trust_image_content: '{{ item.trust_image_content | default("no") }}'
     tty: '{{ item.tty | default(omit) }}'
     ulimits: '{{ item.ulimits | default(omit) }}'
     user: '{{ item.user | default(omit) }}'
