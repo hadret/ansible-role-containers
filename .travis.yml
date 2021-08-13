@@ -4,12 +4,11 @@ services: docker
 
 env:
   matrix:
-    - MOLECULE_DISTRO: ubuntu1804
-    - MOLECULE_DISTRO: ubuntu1604
+    - MOLECULE_DISTRO: ubuntu2004
     - MOLECULE_DISTRO: debian10
 
 install:
-  - pip install molecule docker
+  - pip install ansible docker molecule-docker
 
 script:
   - molecule test

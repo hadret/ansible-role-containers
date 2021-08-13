@@ -1,8 +1,0 @@
----
-extends: default
-ignore:
-  virtenv/
-rules:
-  line-length:
-    max: 300
-    level: warning
