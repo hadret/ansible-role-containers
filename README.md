@@ -1,7 +1,8 @@
 Ansible Role: Containers
 ========================
 
-[![Build Status](https://travis-ci.com/hadret/ansible-role-containers.svg?branch=master)](https://travis-ci.com/hadret/ansible-role-containers)
+[![CI](https://github.com/hadret/ansible-role-containers/actions/workflows/ci.yaml/badge.svg)](https://github.com/hadret/ansible-role-containers/actions/workflows/ci.yaml)
+
 
 An Ansible role that spins up an array of [Docker](https://docker.com)
 containers on Linux. It can additionally handle arrays of Docker registries
