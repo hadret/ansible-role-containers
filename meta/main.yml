@@ -3,20 +3,23 @@ dependencies: []
 
 galaxy_info:
   role_name: containers
-  author: Filip Chabik (hadret)
+  author: hadret
   description: Wrapper role on top of docker_container, docker_network and docker_login.
   license: MIT
   min_ansible_version: 2.7
   platforms:
     - name: Debian
       versions:
-        - buster
+        - all
     - name: Ubuntu
       versions:
-        - xenial
         - bionic
+        - focal
+        - jammy
   galaxy_tags:
     - containers
     - docker
     - networks
     - registry
+
+allow_duplicates: true
