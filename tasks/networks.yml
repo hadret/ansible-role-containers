@@ -1,6 +1,6 @@
 ---
 - name: setup the network(s)
-  docker_network:
+  community.docker.docker_network:
     name: '{{ item.name }}'
     api_version: '{{ item.api_version | default("auto") }}'
     appends: '{{ item.appends | default("no") }}'

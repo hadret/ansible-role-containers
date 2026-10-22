@@ -2,5 +2,19 @@
 - name: test all the things
   hosts: all
   become: true
+  vars:
+    registries:
+      - username: molecule
+        password: molecule
+        registry_url: 127.0.0.1:5000
+        validate_certs: false
+    networks:
+      - name: molecule-containers
+    containers:
+      - name: molecule-container
+        image: registry:2
+        state: started
+        ignore_image: true
+        purge_networks: true
   roles:
     - role: hadret.containers

@@ -11,9 +11,16 @@ and networks.
 Requirements
 ------------
 
-Docker needs to be in place in order for this role to work. Additionally, python
-module [docker](https://pypi.org/project/docker) is also needed (i.e. Docker
-SDK for Python).
+Docker needs to be in place in order for this role to work. Additionally, the
+`community.docker` collection and Python module
+[docker](https://pypi.org/project/docker) are needed (i.e. Docker SDK for
+Python).
+
+Ansible Core 2.17 or newer is required by current `community.docker` releases.
+
+```shell
+ansible-galaxy collection install community.docker
+```
 
 Role Variables
 --------------

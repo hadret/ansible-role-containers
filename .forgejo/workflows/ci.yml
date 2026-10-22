@@ -1,0 +1,55 @@
+---
+name: CI
+
+"on":
+  pull_request:
+  push:
+    branches: ["main"]
+
+defaults:
+  run:
+    working-directory: hadret.containers
+
+jobs:
+  lint:
+    runs-on: docker
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: hadret.containers
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          python-version: "3.13"
+      - run: uvx yamllint .
+
+  molecule:
+    runs-on: docker
+    strategy:
+      fail-fast: false
+      matrix:
+        distro:
+          - ubuntu2404
+          - debian13
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: hadret.containers
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          python-version: "3.13"
+
+      - name: Install test dependencies
+        run: |
+          uv venv --python 3.13
+          uv pip install ansible-core molecule 'molecule-plugins[docker]' docker
+
+      - name: Run Molecule tests
+        run: uv run molecule test
+        env:
+          PY_COLORS: "1"
+          ANSIBLE_FORCE_COLOR: "1"
+          MOLECULE_DISTRO: ${{ matrix.distro }}

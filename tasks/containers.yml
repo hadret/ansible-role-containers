@@ -1,6 +1,6 @@
 ---
 - name: deploy the container(s)
-  docker_container:
+  community.docker.docker_container:
     name: "{{ item.name }}"
     api_version: '{{ item.api_version | default("auto") }}'
     auto_remove: '{{ item.auto_remove | default("no") }}'
@@ -12,7 +12,10 @@
     client_cert: "{{ item.client_cert | default(omit) }}"
     client_key: "{{ item.client_key | default(omit) }}"
     command: "{{ item.command | default(omit) }}"
-    comparisons: "{{ item.comparisons | default(omit) }}"
+    comparisons: >-
+      {{ item.comparisons | default({}) |
+      combine({'networks': 'strict'} if item.purge_networks | default(false) | bool else {}) |
+      combine({'image': 'ignore'} if item.ignore_image | default(false) | bool else {}) }}
     cpu_period: "{{ item.cpu_period | default(omit) }}"
     cpu_quota: "{{ item.cpu_quota | default(omit) }}"
     cpu_shares: "{{ item.cpu_shares | default(omit) }}"
@@ -39,8 +42,8 @@
     groups: "{{ item.groups | default(omit) }}"
     healthcheck: "{{ item.healthcheck | default(omit) }}"
     hostname: "{{ item.hostname | default(omit) }}"
-    ignore_image: '{{ item.ignore_image | default("no") }}'
     image: "{{ item.image | default(omit) }}"
+    image_comparison: "{{ item.image_comparison | default(omit) }}"
     init: '{{ item.init | default("no") }}'
     interactive: '{{ item.interactive | default("no") }}'
     ipc_mode: "{{ item.ipc_mode | default(omit) }}"
@@ -57,7 +60,9 @@
     memory_swap: "{{ item.memory_swap | default(omit) }}"
     memory_swappiness: "{{ item.memory_swappiness | default(omit) }}"
     network_mode: "{{ item.network_mode | default(omit) }}"
-    networks: "{{ item.networks | default(omit) }}"
+    networks: >-
+      {{ item.networks |
+      default([] if item.purge_networks | default(false) | bool else omit) }}
     networks_cli_compatible: "{{ item.networks_cli_compatible | default(omit) }}"
     oom_killer: "{{ item.oom_killer | default(omit) }}"
     oom_score_adj: "{{ item.oom_score_adj | default(omit) }}"
@@ -67,8 +72,7 @@
     pids_limit: "{{ item.pids_limit | default(omit) }}"
     privileged: '{{ item.privileged | default("no") }}'
     published_ports: "{{ item.published_ports | default(omit) }}"
-    pull: '{{ item.pull | default("no") }}'
-    purge_networks: '{{ item.purge_networks | default("no") }}'
+    pull: "{{ item.pull | default(false) }}"
     read_only: '{{ item.read_only | default("no") }}'
     recreate: '{{ item.recreate | default("no") }}'
     restart: '{{ item.restart | default("no") }}'

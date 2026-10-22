@@ -1,0 +1,67 @@
+---
+- name: Prepare Docker host
+  hosts: all
+  become: true
+  tasks:
+    - name: Install Docker and its Python SDK
+      ansible.builtin.apt:
+        name:
+          - apache2-utils
+          - docker.io
+          - python3-docker
+        state: present
+        update_cache: true
+
+    - name: Configure Docker for nested CI
+      ansible.builtin.copy:
+        content: |
+          {
+            "storage-driver": "vfs"
+          }
+        dest: /etc/docker/daemon.json
+        mode: "0644"
+
+    - name: Start Docker
+      ansible.builtin.service:
+        name: docker
+        state: started
+
+    - name: Create registry authentication directory
+      ansible.builtin.file:
+        path: /tmp/molecule-registry-auth
+        state: directory
+        mode: "0700"
+
+    - name: Create registry credentials
+      ansible.builtin.shell: >-
+        htpasswd -Bbn molecule molecule >
+        /tmp/molecule-registry-auth/htpasswd
+      args:
+        creates: /tmp/molecule-registry-auth/htpasswd
+
+    - name: Start authenticated test registry
+      community.docker.docker_container:
+        name: molecule-registry
+        image: registry:2
+        pull: missing
+        state: started
+        published_ports:
+          - "127.0.0.1:5000:5000"
+        env:
+          REGISTRY_AUTH: htpasswd
+          REGISTRY_AUTH_HTPASSWD_REALM: Molecule
+          REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+        volumes:
+          - /tmp/molecule-registry-auth:/auth:ro
+
+    - name: Wait for test registry
+      ansible.builtin.uri:
+        url: http://127.0.0.1:5000/v2/
+        user: molecule
+        password: molecule
+        force_basic_auth: true
+        status_code: 200
+      register: registry_status
+      until: registry_status.status == 200
+      retries: 10
+      delay: 1

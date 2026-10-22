@@ -1,21 +1,27 @@
 ---
 dependencies: []
 
+collections:
+  - community.docker
+
 galaxy_info:
   role_name: containers
   author: hadret
   description: Wrapper role on top of docker_container, docker_network and docker_login.
   license: MIT
-  min_ansible_version: 2.7
+  min_ansible_version: "2.17"
   platforms:
     - name: Debian
       versions:
-        - all
+        - buster
+        - bullseye
+        - bookworm
+        - trixie
     - name: Ubuntu
       versions:
-        - bionic
         - focal
         - jammy
+        - noble
   galaxy_tags:
     - containers
     - docker

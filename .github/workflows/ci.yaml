@@ -6,6 +6,9 @@ name: CI
     branches:
       - main
 
+permissions:
+  contents: read
+
 defaults:
   run:
     working-directory: "hadret.containers"
@@ -16,12 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the codebase.
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           path: "hadret.containers"
+          persist-credentials: false
 
       - name: Set up Python 3.
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: "3.x"
 
@@ -38,22 +42,23 @@ jobs:
     strategy:
       matrix:
         distro:
-          - ubuntu2004
-          - debian11
+          - ubuntu2404
+          - debian13
 
     steps:
       - name: Check out the codebase.
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           path: "hadret.containers"
+          persist-credentials: false
 
       - name: Set up Python 3.
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: "3.x"
 
       - name: Install test dependencies.
-        run: pip3 install ansible molecule[docker] docker
+        run: pip3 install ansible-core molecule 'molecule-plugins[docker]' docker
 
       - name: Run Molecule tests.
         run: molecule test

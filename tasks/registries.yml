@@ -1,6 +1,6 @@
 ---
 - name: log into private registry
-  docker_login:
+  community.docker.docker_login:
     username: '{{ item.username }}'
     password: '{{ item.password }}'
     api_version: '{{ item.api_version | default("auto") }}'
