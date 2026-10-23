@@ -40,10 +40,13 @@ jobs:
     name: Molecule
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         distro:
-          - ubuntu2404
+          - debian12
           - debian13
+          - ubuntu2204
+          - ubuntu2404
 
     steps:
       - name: Check out the codebase.
