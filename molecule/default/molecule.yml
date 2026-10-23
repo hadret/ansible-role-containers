@@ -5,7 +5,7 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: instance
+  - name: '${MOLECULE_INSTANCE_NAME:-instance}'
     image: 'geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu2404}-ansible:latest'
     command: ${MOLECULE_DOCKER_COMMAND:-/lib/systemd/systemd}
     volumes:
